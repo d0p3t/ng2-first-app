@@ -9,12 +9,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
+        this.message = 'Hello!';
+        this.users = [
+            { id: 25, name: 'Remco D0p3t', username: 'd0p3t' },
+            { id: 26, name: 'Daniel Trovsky', username: 'daniel123' },
+            { id: 27, name: 'Franz Twitch', username: 'franztwitch' }
+        ];
     }
+    AppComponent.prototype.selectUser = function (user) {
+        this.activeUser = user;
+        console.log(this.activeUser);
+    };
+    AppComponent.prototype.onUserCreated = function (event) {
+        this.users.push(event.user);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <div class=\"jumbotron\">\n      <h1>Welcome to Our App!</h1>\n    </div>\n  ",
-            styles: ["\n      .jumbotron { box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2); }\n    "]
+            templateUrl: './app/app.component.html',
+            styleUrls: ['./app/app.component.css']
         })
     ], AppComponent);
     return AppComponent;
